@@ -53,7 +53,7 @@ def main() -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")  # Updated device setup
 
     # load model and transform
-    state_dict = torch.load(args.model)
+    state_dict = torch.load(args.model, map_location=device, weights_only=True)
     model = generatorNN(args.latent_size).to(device)
     model.load_state_dict(state_dict)
 

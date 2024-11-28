@@ -27,7 +27,7 @@ def opts() -> argparse.ArgumentParser:
         help="Latent size of generated noise",
     )
     parser.add_argument(
-        "--batch-size",
+        "--batch_size",
         type=int,
         default=64,
         metavar="B",
@@ -182,7 +182,7 @@ def main():
     fake_scores = []
 
     discriminator = to_device(discriminatorNN(), device)
-    generator = to_device(generatorNN(args.latent_size), device)
+    generator = to_device(generatorNN(latent_size), device)
 
     # Create optimizers
     discriminator_optimizer = torch.optim.Adam(discriminator.parameters(), lr=args.lr, betas=(0.5, 0.999))
